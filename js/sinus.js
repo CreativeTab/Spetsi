@@ -44,9 +44,9 @@ var div, gb, gf, slda, sldf, sldp, sldm, lbla, lblf, lblp, lblm;
 var a = 1;              // Amplitude de la sinusoïde
 var f = 1;              // Fréquence de la sinusoïde
 var p = 0;              // Phase de la sinusoïde
-var m = 0;              // Moyenne de la sinusoïde
+var m = 0;              // Offset de la sinusoïde
 var xmax = 5;           // Valeur extrême des abscisses
-var ymax = 3;           // Valeur extrême des ordonnées
+var ymax = 10;           // Valeur extrême des ordonnées
 
 function init()
 {
@@ -67,16 +67,16 @@ function init()
     gf.ylim = [-ymax, ymax];
 
     // Etiquettes du graphe
-    Label(div, '\\(t\\)', 365, 115, 'br', color[1]);
-    Label(div, '\\(x(t)\\)', 178, 2, 'tl', color[1]);
+    Label(div, '\\(t(ms)\\)', 420, 115, 'br', color[1]);
+    Label(div, '\\(v(t)\\)', 178, 25, 'tl', color[1]);
 
-    // Défilement et étiquette "Moyenne"
-    lblm = Label(div, 'Moyenne : ', 0, 220);
-    sldm = Slider(div, 150, 220, 200, -3,  3, m, 0.1, draw);
+    // Défilement et étiquette "Offset"
+    lblm = Label(div, 'Offset : ', 0, 220);
+    sldm = Slider(div, 150, 220, 200, -5,  5, m, 0.1, draw);
 
     // Défilement et étiquette "Amplitude"
     lbla = Label(div, 'Amplitude : ', 0, 250);
-    slda = Slider(div, 150, 250, 200, -3,  3, a, 0.1, draw);
+    slda = Slider(div, 150, 250, 200, -5,  5, a, 0.1, draw);
 
     // Slider et étiquette "Fréquence"
     lblf = Label(div, 'Fréquence : ', 0, 280);
@@ -108,7 +108,7 @@ function draw()
 //    p = Math.round(p*10) / 10;
 
     // Etiquettes de valeur
-    lblm.innerHTML = 'Moyenne : ' + m.toString();
+    lblm.innerHTML = 'Offset : ' + m.toString();
     lbla.innerHTML = 'Amplitude : ' + a.toString();
     lblf.innerHTML = 'Fréquence : ' + f.toString();
     lblp.innerHTML = 'Phase : ' + p.toString() + ' radians';
@@ -117,7 +117,7 @@ function draw()
     for(n = -5; n < 5; n=n+.02)
     {
         t.push( n );
-        y.push( m + a * Math.sin( 2 * Math.PI * f * n + p ) );
+        y.push( m + a * Math.sin( 2 * Math.PI * f * n + p ));
     }
 
     // Affiche la sinusoïde

@@ -42,11 +42,11 @@ var div, gb, gf, slda, sldf, sldp, sldm, lbla, lblf, lblp, lblm;
 
 // Paramètres
 var a = 1;              // Amplitude de la sinusoïde
-var f = 1;              // Fréquence de la sinusoïde
+var f = 0;              // Fréquence de la sinusoïde
 var p = 0;              // Phase de la sinusoïde
 var m = 0;              // Moyenne de la sinusoïde
-var xmax = 5;           // Valeur extrême des abscisses
-var ymax = 3;           // Valeur extrême des ordonnées
+var xmax = 10;           // Valeur extrême des abscisses
+var ymax = 10;           // Valeur extrême des ordonnées
 
 function init()
 {
